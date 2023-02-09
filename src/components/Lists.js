@@ -25,6 +25,10 @@ const Lists = React.memo(({todoData, setTodoData}) => {
         // splice 매소드 - splice(index, 0, item) : index 위치에 0개를 삭제하고 item을 추가
         newTodoData.splice(result.destination.index, 0, reorderedItem);
         setTodoData(newTodoData);
+        
+        // 새로고침해도 입력했던 것들 그대로 있도록 localstorage에 저장
+        // JSON.stringify를 사용해서 텍스트로 변환해준 다음에 저장
+        localStorage.setItem('todoData', JSON.stringify(newTodoData));
     };
 
   return (
